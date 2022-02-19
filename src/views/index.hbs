@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            margin: 40px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic sequi, accusantium iusto et quaerat, ab provident numquam ipsa est minima in officiis soluta veritatis placeat eos nam quod nesciunt earum?</h1>
+
+    {{#if udata}}
+    {{#each udata}}
+    <form action="/update/{{_id}}" method="POST">
+        <input type="text" placeholder="name..." name="name" value="{{name}}">
+        <input type="text" placeholder="address.." name="address" value="{{address}}">
+        <input type="number" placeholder="age..." name="age" value="{{age}}">
+        <input type="submit"> 
+        </form>
+    {{/each}}
+    
+    {{else}}
+    <form action="/register" method="POST">
+        <input type="text" placeholder="name..." name="name" required>
+        <input type="text" placeholder="address.." name="address" required>
+        <input type="number" placeholder="age..." name="age" required>
+        <input type="submit"> 
+    </form>
+    {{/if}}
+
+    
+
+
+    {{#if user}}
+    <table>
+    <tr><th>Name:</th><th>Addresss:</th><th>Age:</th></tr>
+    {{#each user}}
+    <tr><td><a href="/delete/{{name}}">{{name}}</a></td><td>{{address}}</td><td>{{age}}</td>
+    <td><a href="/edit/{{name}}">Edit</a></td>
+    </tr>
+    {{/each}}
+    </table>
+    {{else}}
+    
+    {{/if}}
+    <div id="message">
+        <h2>Data div</h2>
+    </div>
+</body>
+</html>
+
+
